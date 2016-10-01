@@ -2,11 +2,11 @@ var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var helpers = require('./helpers');
+var configs = require('./configs');
 
 module.exports = {
   entry: {
-    'polyfills': './src/polyfills.jsx',
-    'vendor': './src/vendor.jsx',
+    'vendor': configs.vendors,
     'app': './src/main.jsx'
   },
 
@@ -25,28 +25,26 @@ module.exports = {
       loader: 'file?name=assets/[name].[hash].[ext]'
     }, {
       test: /\.css$/,
-      exclude: helpers.root('src', 'app'),
+      exclude: /node_modules/,
+      include: helpers.root('src'),
       loader: ExtractTextPlugin.extract('style', 'css?sourceMap')
     }, {
       test: /\.less$/,
       loader: ExtractTextPlugin.extract('style', 'css?sourceMap!less'),
-      exclude: './node_modules/'
+      exclude: /node_modules/,
+      include: helpers.root('src')
     }]
   },
 
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['app', 'vendor', 'polyfills']
+    new webpack.ProvidePlugin({
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery",
     }),
 
     new HtmlWebpackPlugin({
       template: 'src/index.html'
-    }),
-    
-    new webpack.ProvidePlugin({
-      $: "jquery",
-      jQuery: "jquery",
-      "window.jQuery": "jquery"
     })
   ]
 };

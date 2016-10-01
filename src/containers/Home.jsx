@@ -41,7 +41,6 @@ class Home extends Component {
     render() {
         return (
             <div>
-                <button class="ui button">Follow</button>
                 <ul><Link to="/courierList">asdfasdf</Link></ul>
                 <div>{this.props.children}`</div>
                 <Header name="my is Header"/>

@@ -5,14 +5,15 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
-
+var configs = require('./configs');
+var devRootPath = configs.dev.rootPath();
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-module-eval-source-map',
 
   entry: {
     'app': [
-      'webpack-dev-server/client?http://localhost:8080/',
+      'webpack-dev-server/client?' + devRootPath,
       'webpack/hot/dev-server',
       './src/main.jsx'
     ]
@@ -20,7 +21,7 @@ module.exports = webpackMerge(commonConfig, {
 
   output: {
     path: helpers.root('dist'),
-    publicPath: 'http://localhost:8080/',
+    publicPath: devRootPath,
     filename: '[name].js',
     chunkFilename: '[id].chunk.js'
   },
@@ -28,8 +29,9 @@ module.exports = webpackMerge(commonConfig, {
   plugins: [
     new ExtractTextPlugin('[name].css'),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor.js'),
     new OpenBrowserPlugin({
-      url: 'http://localhost:8080/'
+      url: devRootPath
     })
   ],
 
@@ -37,15 +39,17 @@ module.exports = webpackMerge(commonConfig, {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    port: 8080,
+    quiet: true,
+    noInfo: true,
+    lazy: false,
     stats: {
       colors: true
     },
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
-    quiet: true,
-    noInfo: true,
-    lazy: false
+    proxy: {
+      '**': configs.server.rootPath()
+    }
   }
 });

@@ -7,7 +7,6 @@
  * http://opensource.org/licenses/MIT
  *
  */
-
 ;(function ($, window, document, undefined) {
 
 "use strict";
