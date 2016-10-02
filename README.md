@@ -1,9 +1,9 @@
 # webpack-configured
 简单的，清晰的目录结构和配置文件。
 
-> config里的configs描述了全局的配置，有点少哈，你看着加吧
-
 # command
+npm install
+
 npm run server => 代理服务器
 > apis文件开头是请求type，后面是接口名字
 

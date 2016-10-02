@@ -10,7 +10,6 @@ var devRootPath = configs.dev.rootPath();
 
 module.exports = webpackMerge(commonConfig, {
   devtool: 'cheap-module-eval-source-map',
-  // devtool: 'source-map',
 
   entry: {
     'app': [
