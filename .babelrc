@@ -11,7 +11,7 @@
         "style": true,
         "libraryDirectory": "lib", // default: lib 支持 ''
         "libraryName": "antd",
-        "camel2DashComponentName": false // default: true 
+        "camel2DashComponentName": true // default: true 
       }
     ]
   ]
