@@ -39,9 +39,9 @@ module.exports = webpackMerge(commonConfig, {
     historyApiFallback: true,
     hot: true,
     inline: true,
-    quiet: true,
-    noInfo: true,
-    lazy: false,
+    // quiet: true,
+    // noInfo: true,
+    // lazy: false,
     stats: {
       colors: true
     },

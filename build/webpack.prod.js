@@ -24,11 +24,6 @@ module.exports = webpackMerge(commonConfig, {
       compress: {
         warnings: false
       }
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'ENV': JSON.stringify(process.env.NODE_ENV)
-      }
     })
   ]
 });
