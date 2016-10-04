@@ -13,6 +13,4 @@ npm run prod => 生产
 
 
 # 注意
-我没有使用webpack中间件结合express，因为开发中接口用代理的多一些，所以麻烦打开2个shell吧~
-
-测试环境的代码没有，等搞清楚了再添加=。=
+发现了一个[好东西](https://github.com/erikras/react-redux-universal-hot-example)，所以不造轮子了
