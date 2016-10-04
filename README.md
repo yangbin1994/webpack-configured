@@ -12,5 +12,5 @@ npm run dev => 开发
 npm run prod => 生产
 
 
-# 注意
-发现了一个[好东西](https://github.com/erikras/react-redux-universal-hot-example)，所以不造轮子了
+#  ⚠️⚠️⚠️注意 ⚠️⚠️⚠️
+发现了一个[好东西](https://github.com/erikras/react-redux-universal-hot-example)，所以不造轮子了 
