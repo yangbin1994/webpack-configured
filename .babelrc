@@ -13,6 +13,9 @@
         "libraryName": "antd",
         "camel2DashComponentName": true // default: true 
       }
+    ],
+    [
+      "react-hot-loader/babel"
     ]
   ]
 }

@@ -3,12 +3,12 @@ function rootPath() {
 }
 
 module.exports = {
-    server: {
+    apiServer: {
         host: 'http://localhost',
         port: 3001,
         rootPath: rootPath
     },
-    dev: {
+    server: {
         host: 'http://localhost',
         port: 8080,
         rootPath: rootPath

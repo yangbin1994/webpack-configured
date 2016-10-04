@@ -20,7 +20,7 @@ class SiderMenu extends Component {
                         <Menu.Item key="1"><IndexLink to="/">page1</IndexLink></Menu.Item>
                         <Menu.Item key="2"><Link to="/page2">page2</Link></Menu.Item>
                         {this.props.siderMenuData.map((item, index) =>
-                            (<Menu.Item key={index + 10}>{index}</Menu.Item>)
+                            (<Menu.Item key={index}>{index+11}</Menu.Item>)
                         ) }
                     </SubMenu>
                 </Menu>

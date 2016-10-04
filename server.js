@@ -18,6 +18,6 @@ fs.readdirSync(helpers.root('apis')).forEach(function (fileName) {
 
 
 // 启动
-var server = app.listen(configs.server.port, function () {
-	console.log('app server launch at', configs.server.rootPath());
+var server = app.listen(configs.apiServer.port, function () {
+	console.log('app server launch at', configs.apiServer.rootPath());
 });

@@ -1,22 +1,26 @@
+import { AppContainer } from 'react-hot-loader';
 import React from 'react';
-import ReactDom from 'react-dom';
-import { Router, Route, Link, browserHistory, IndexRoute} from 'react-router';
-import Frame from './containers/Frame';
-import Page1 from './containers/Page1';
-import Page2 from './containers/Page2';
+import ReactDOM from 'react-dom';
+import App from './app';
 
-import {Provider} from 'react-redux';
-import configureStore from './redux';
+const rootEl = document.getElementById('root');
+ReactDOM.render(
+  <AppContainer>
+    <App />
+  </AppContainer>,
+  rootEl
+);
 
-let store = configureStore()
-
-ReactDom.render((
-    <Provider store={store}>
-        <Router history={browserHistory}>
-            <Route path="/" component={Frame}>
-                <IndexRoute component={Page1}/>
-                <Route path="page2" component={Page2}/>
-            </Route>
-        </Router>
-    </Provider>
-), document.getElementById('root'))
+if (module.hot) {
+  module.hot.accept('./app', () => {
+    // If you use Webpack 2 in ES modules mode, you can
+    // use <App /> here rather than require() a <NextApp />.
+    const NextApp = require('./app').default;
+    ReactDOM.render(
+      <AppContainer>
+         <NextApp />
+      </AppContainer>,
+      rootEl
+    );
+  });
+}

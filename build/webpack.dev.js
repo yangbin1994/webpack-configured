@@ -6,13 +6,14 @@ var OpenBrowserPlugin = require('open-browser-webpack-plugin');
 var commonConfig = require('./webpack.common.js');
 var helpers = require('./helpers');
 var configs = require('./configs');
-var devRootPath = configs.dev.rootPath();
+var devRootPath = configs.server.rootPath();
 
 module.exports = webpackMerge(commonConfig, {
-  devtool: 'cheap-module-eval-source-map',
-
+  // devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval',
   entry: {
     'app': [
+      'react-hot-loader/patch',
       'webpack-dev-server/client?' + devRootPath,
       'webpack/hot/dev-server',
       './src/main.jsx'
@@ -38,18 +39,12 @@ module.exports = webpackMerge(commonConfig, {
   devServer: {
     historyApiFallback: true,
     hot: true,
-    inline: true,
-    // quiet: true,
-    // noInfo: true,
-    // lazy: false,
-    stats: {
-      colors: true
-    },
+    quiet: false,
     headers: {
       'Access-Control-Allow-Origin': '*'
     },
     proxy: {
-      '**': configs.server.rootPath()
+      '**': configs.apiServer.rootPath()
     }
   }
 });
